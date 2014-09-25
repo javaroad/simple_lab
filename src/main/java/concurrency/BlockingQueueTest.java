@@ -4,6 +4,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;  
 import java.util.concurrent.ExecutorService;  
 import java.util.concurrent.Executors;  
+import java.util.concurrent.TimeUnit;
 
 /** 
  * BlockingQueue是一种特殊的Queue，若BlockingQueue是空的， 
@@ -95,11 +96,17 @@ public class BlockingQueueTest {
         service.submit(producer);  
         service.submit(consumer);  
         // 程序运行5s后，所有任务停止  
-        try {  
-            Thread.sleep(5000);  
-        } catch (InterruptedException e) {  
-        }  
-        service.shutdownNow();  
+//        try {  
+//            Thread.sleep(5000);  
+//        } catch (InterruptedException e) {  
+//        }  
+        service.shutdown();
+        try {
+            if(!service.awaitTermination(5, TimeUnit.SECONDS)){
+                service.shutdownNow();
+            }
+        } catch (InterruptedException e) {
+        }
     }  
 
     public static void main(String[] args) {  
