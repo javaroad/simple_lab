@@ -22,7 +22,7 @@ public class Regex {
         System.out.println(matcher.matches());  
         System.out.println(pattern.matches("b*g","bbg"));  
         //验证邮政编码  
-        System.out.println(pattern.matches("[0-9]{6}", "200038"));  
+        System.out.println(pattern.matches("[0-9]{12}", "200038"));  
         System.out.println(pattern.matches("\\d{6}", "200038"));  
         //验证电话号码  
         System.out.println(pattern.matches("[0-9]{3,4}-?[0-9]+", "02178989799"));  

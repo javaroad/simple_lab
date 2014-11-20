@@ -14,6 +14,7 @@
  */
 package concurrency;
 
+import java.io.File;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import org.apache.commons.lang3.StringUtils;
@@ -37,7 +38,7 @@ public class HiveOutpoutTask implements Runnable{
                 //ignore 
             }
             if(StringUtils.isNotEmpty(localFilePath)){
-                LOGGER.info(localFilePath);
+                LOGGER.info("take path from queue. {} ",localFilePath);
             }
         }
     }

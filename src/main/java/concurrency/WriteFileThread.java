@@ -44,6 +44,8 @@ class MyThread implements Runnable{
             File file = new File("d:\\tmp\\ccc\\bbb.txt");
             if(!file.exists()){
                boolean needCreateNewFile = file.createNewFile() ;
+//                boolean needCreateNewFile = file.renameTo(new File("d:\\tmp\\ccc\\bbb.txt.bak")) ;
+               System.out.println(needCreateNewFile);
             }
             os = new BufferedOutputStream(new FileOutputStream(file, true));
             for (int i = 0; i < 1000; i++)

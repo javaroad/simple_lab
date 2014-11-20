@@ -12,7 +12,7 @@ public class Server {
 		TServerTransport serverTransport = new TServerSocket(9090);
 		Test.Processor processor = new Test.Processor(new TestImpl());
 		TServer server = new TSimpleServer(
-				new Args(serverTransport).processor(processor).processor(processor));
+				new Args(serverTransport).processor(processor));
 		 System.out.println("Starting the simple server...");
 	     server.serve();
 	}

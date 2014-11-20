@@ -50,4 +50,13 @@ public class MatcherTest{
             System.out.println(mat.group(i));
         }
     }
+    public static void regex4() {
+        boolean mat = Pattern.matches("[0-9]{12}","2014092812289");
+        System.out.println(mat);
+    }
+    public static void regex5() {
+        boolean mat = Pattern.matches("2.20[3,6]","2.206");
+        System.out.println(mat);
+        System.out.println("2.206".matches("2.20[3,6]"));
+    }
 }

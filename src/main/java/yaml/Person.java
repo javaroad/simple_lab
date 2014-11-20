@@ -14,11 +14,13 @@
  */
 package yaml;
 
+import java.util.Map;
+
 import lombok.Data;
 
 @Data
 public class Person{
     private String username = null ;
     private Car car = null ;
-    
+    private Map<String,String> map ;
 }

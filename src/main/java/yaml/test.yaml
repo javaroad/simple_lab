@@ -2,3 +2,8 @@ username: aaa
 car:
   color: red
   num: 2
+map: 
+  {
+   user.name: root,
+   fs.default.name: 'hdfs://cdndnode54:9000'
+   }

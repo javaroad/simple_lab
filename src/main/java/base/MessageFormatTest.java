@@ -8,5 +8,6 @@ public class MessageFormatTest {
 	public static void main(String[] args) {
 		logger.info(" from App where packageName in({})", "aaa");
 		//System.out.println(MessageFormat.format(" from App where packageName in({1})", "aaa"));
+		Boolean istrue = true ;
 	}
 }

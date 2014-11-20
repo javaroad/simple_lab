@@ -36,11 +36,16 @@ public class HdfsCommon {
 	 *            格式为hdfs://ip:port/destination
 	 * @throws IOException
 	 */
-	public void upFile(String localFile, String hdfsPath) throws IOException {
-		InputStream in = new BufferedInputStream(new FileInputStream(localFile));
-		OutputStream out = fs.create(new Path(hdfsPath));
-		org.apache.hadoop.io.IOUtils.copyBytes(in, out, conf);
-	}
+    public void upFile(String localFile, String hdfsPath) {
+    
+        try {
+            InputStream in = new BufferedInputStream(new FileInputStream(localFile));
+            OutputStream out = fs.create(new Path(hdfsPath),false);
+            org.apache.hadoop.io.IOUtils.copyBytes(in, out, conf);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 	/**
 	 * 附加文件
@@ -96,8 +101,8 @@ public class HdfsCommon {
 			public Integer run() throws IOException {
 				HdfsCommon hdfs = new HdfsCommon();
 				//hdfs.delFile(hdfsPath);
-				hdfs.upFile("D:\\tmp\\statlog.201409191648",
-						"/storm/output/test/statlog.201409191648");
+				hdfs.upFile("D:\\tmp\\file\\201409251438",
+						"/storm/output/test/201409251437");
 				return 1;
 			}
 		});

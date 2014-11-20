@@ -2,6 +2,7 @@ package jodatest;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Locale;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
@@ -21,7 +22,14 @@ public class JodaTimeTest {
 
 	public static void main(String[] args) {
 		//new JodaTimeTest();
-	    format2PerFiveMinite();
+	   // format2PerFiveMinite();
+	    DateTime datetime = new DateTime( ) ;
+	    System.out.println(datetime.toString("yyyyMMddHHmmssSSS"));
+	    System.out.println(datetime.getDayOfMonth());
+	    System.out.println(datetime.getDayOfWeek());
+	    System.out.println(datetime.getDayOfYear());
+	    System.out.println(datetime.toString("dd/MMM/yyyy:HH:mm:ss Z",Locale.US));
+	    format2PerFiveMinite1();
 	}
 
     private static void format2PerFiveMinite() {
@@ -34,6 +42,15 @@ public class JodaTimeTest {
         System.out.println(datetime.plusMinutes(5).toString("yyyyMMddHHmm"));
         DateTime dateTime = new DateTime(2000, 1, 1, 0, 0, 0, 0);
         System.out.println(dateTime.plusDays(1).toString("yyyyMMddHHmm"));
+    }
+    
+    private static void format2PerFiveMinite1() {
+        
+       
+        DateTimeFormatter format = DateTimeFormat.forPattern("dd/MMM/yyyy:HH:mm:ss Z").withLocale(Locale.US);  
+        //时间解析    
+        DateTime datetime = DateTime.parse("18/Sep/2014:00:00:36 +0800", format); 
+        System.out.println(datetime.plusMinutes(5).toString("yyyyMMddHHmm"));
     }
 
     private static void format() {

@@ -48,6 +48,10 @@ public class HiveOutPutTaskTest{
                         }
                        
                     }
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                    }
                 }
                 
             };
