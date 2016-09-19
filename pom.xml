@@ -8,45 +8,22 @@
 	<name>lab Maven Webapp</name>
 	<packaging>jar</packaging>
 	<url>http://maven.apache.org</url>
-	 	 <repositories>
-	 	 	<repository>
-	          <id>central</id>
-	          <url>https://repo1.maven.org/maven2</url>
-	          <releases>
-	            <enabled>true</enabled>
-	          </releases>
-	        </repository>
-			<repository>
-				<id>nexus</id>
-				<name>letv</name>
-				<url>http://220.181.153.240:9001/nexus/content/groups/public/</url>
-			</repository>
-			<repository>
-			    <id>snapshot-repository.java.net</id>
-			    <name>Java.net Snapshot Repository for Maven</name>
-			    <url>https://maven.java.net/content/repositories/snapshots/</url>
-			    <layout>default</layout>
-			</repository>
-			
-		</repositories> 
-    
+	<properties>
+		<java.version>1.8</java.version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>commons-beanutils</groupId>
 			<artifactId>commons-beanutils</artifactId>
 			<version>1.9.0</version>
 		</dependency>
-		<dependency>
-		   <groupId>com.letv.shuttle</groupId>
-		   <artifactId>shuttle-rpc</artifactId>
-		   <version>1.0.0-test</version>
-		    <exclusions>
-                <exclusion>
-                    <groupId>javax.servlet</groupId>
-                    <artifactId>servlet-api</artifactId>
-                </exclusion>
-            </exclusions>
-		</dependency>
+		
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -247,6 +224,47 @@
 	      <artifactId>javax.inject</artifactId>
 	      <version>1</version>
 	    </dependency>
+        
+        
+         <dependency>
+	      <groupId>org.zeromq</groupId>
+	      <artifactId>jzmq</artifactId>
+	      <version>2.2.0</version>
+	    </dependency>
+	    
+	    <dependency>
+				  <groupId>commons-httpclient</groupId>
+				  <artifactId>commons-httpclient</artifactId>
+				  <version>3.1</version>
+		</dependency>
+	    <dependency>
+			<groupId>ch.ethz.ganymed</groupId>
+			<artifactId>ganymed-ssh2</artifactId>
+			<version>262</version>
+		</dependency>
+		
+	    <dependency>
+		    <groupId>redis.clients</groupId>
+		    <artifactId>jedis</artifactId>
+		    <version>2.7.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>13.0</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.mongodb</groupId>
+		    <artifactId>mongo-java-driver</artifactId>
+		    <version>3.0.2</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.google.code.morphia</groupId>
+		    <artifactId>morphia</artifactId>
+		    <version>0.104</version>
+		</dependency>
+		
 	</dependencies>
 	<build>
 		<finalName>lab</finalName>
@@ -260,37 +278,6 @@
 					<target>1.7</target>
 					<encoding>UTF-8</encoding>
 				</configuration>
-			</plugin>
-			
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-shade-plugin</artifactId>
-				<version>2.2</version>
-				<configuration>
-					<createDependencyReducedPom>true</createDependencyReducedPom>
-				</configuration>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>shade</goal>
-						</goals>
-						<configuration>
-							<transformers>
-								<transformer
-									implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
-								<transformer
-									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-									<mainClass>com.letvcloud.cnd.bandwidth.CalcBandWidthTopology</mainClass>
-								</transformer>
-								<transformer
-									implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
-									<resource>dbcpconfig.properties</resource>
-								</transformer>
-							</transformers>
-						</configuration>
-					</execution>
-				</executions>
 			</plugin>
 			
 		</plugins>

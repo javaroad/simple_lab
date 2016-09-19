@@ -6,10 +6,8 @@
 			http://code.alibabatech.com/schema/dubbo 
 			http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-   <!-- <dubbo:application name="consumer.application.tst-svr" owner="roy.wang" />
-
-	 dubbo直连配置 
-	<dubbo:reference id="voucherCheckService" interface="com.qunar.des.svr.voucher.api.rservice.VoucherCheckService" 
-	   url="dubbo://127.0.0.1:20895/com.qunar.des.svr.voucher.api.rservice.VoucherCheckService" version="0.0.1"/>
-	-->
+   <dubbo:application name="member-service-consumer" />
+	<!-- <dubbo:registry address="multicast://224.5.6.7:1234"/>  -->
+	<dubbo:reference id="memberservice" interface="com.letv.cloud.uc.service.internal.MemberService" 
+	 url="dubbo://192.168.56.1:20880/com.letv.cloud.uc.service.internal.MemberService" />
 </beans>

@@ -15,7 +15,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
-import org.springframework.mail.javamail.MimeMessageHelper;
 
 public class SendMail {
 	public ApplicationContext ctx = null;
@@ -40,12 +39,13 @@ public class SendMail {
 		}
 	}
 
-	 public static MimeMessage copyFromCrmMailQueueItem() throws MessagingException, UnsupportedEncodingException {
+	 public static MimeMessage getMimeMessage(String title,String content) throws MessagingException, UnsupportedEncodingException {
 	        Properties props = System.getProperties();
 	        MimeMessage mimeMessage = new MimeMessage(Session.getDefaultInstance(props));
-	        mimeMessage.setFrom(new InternetAddress(MimeUtility.encodeText("asdfasf") + "<" + "xuan.yang@qunar.com" + ">"));
-	        mimeMessage.addRecipients(Message.RecipientType.TO, "");
-	        mimeMessage.setSubject("测试", "UTF-8");
+	        mimeMessage.setFrom(new InternetAddress(MimeUtility.encodeText("测试") + "<" + "yangxuan@letv.com" + ">"));
+	        mimeMessage.addRecipients(Message.RecipientType.TO, "yangxuan@letv.com");
+	        mimeMessage.addRecipients(Message.RecipientType.TO, "lvzhouyang@letv.com");
+	        mimeMessage.setSubject("test", "UTF-8");
 	        mimeMessage.setContent("测试", "text/html;charset=UTF-8");
 
 	        return mimeMessage;
@@ -58,18 +58,7 @@ public class SendMail {
 		MimeMessage mailMessage = senderImpl.createMimeMessage();
 		// 设置utf-8或GBK编码，否则邮件会有乱码
 		try {
-//			MimeMessageHelper messageHelper = new MimeMessageHelper(
-//					mailMessage, true, "utf-8");
-//
-//			messageHelper.setTo(new InternetAddress(MimeUtility.encodeText("Qunar目的地") + "<" +"xuan.yang@qunar.com"+ ">"));// 接受者
-//			messageHelper.setFrom("xuan.yang@qunar.com");// 发送者
-//			messageHelper.setSubject("测试邮件");// 主题
-//			// 邮件内容，注意加参数true，表示启用html格式
-//			messageHelper
-//					.setText(
-//							"<html><head></head><body><h1>测试邮件</h1></body></html>",
-//							true);
-			sender.send(copyFromCrmMailQueueItem());
+			sender.send(getMimeMessage("",""));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -20,4 +20,17 @@ import lombok.Data;
 public class Car{
     private String color = null;
     private int num ;
+    public String getColor() {
+        return color;
+    }
+    public void setColor(String color) {
+        this.color = color;
+    }
+    public int getNum() {
+        return num;
+    }
+    public void setNum(int num) {
+        this.num = num;
+    }
+    
 }

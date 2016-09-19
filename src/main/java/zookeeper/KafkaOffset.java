@@ -25,8 +25,8 @@ public class KafkaOffset{
     public static void main(String[] args) throws Exception {
     
         String[] arg0 = { "--broker-list",
-                "10.182.200.27:9092,10.182.200.28:9092,10.182.200.29:9092",
-                "--topic", "live-server-report", "--time", "-1" };
+                "10.140.60.124:9092,10.140.60.125:9092,10.140.60.126:9092",
+                "--topic", "cdn-log-beta", "--time", "-1" };
         
         Process pro = Runtime.getRuntime().exec(
                 "java -cp E:\\workspace\\wk1\\lab\\target\\lab.jar kafka.tools.GetOffsetShell "
@@ -39,8 +39,8 @@ public class KafkaOffset{
         while ((tmp = br.readLine()) != null) {
             msg +=tmp+"\n";
         }
-       // System.out.println(msg);
-        Pattern pattern = Pattern.compile("live-server-report:[0-9]{1,2}:([0-9]+)");
+        System.out.println(msg);
+        Pattern pattern = Pattern.compile("cdn-log-beta:[0-9]{1,2}:([0-9]+)");
         Matcher matcher = pattern
                 .matcher(msg);
 
